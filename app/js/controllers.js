@@ -4,8 +4,8 @@
 var result = []
 
 angular.module('myApp.controllers', []).
-  controller('VisualCtrl', ['$scope', '$http', function($scope, $http) {
-    $http.get('https://api.github.com/repos/basho/riak/issues?state=closed&client_id=6b6eb2d2f4129ecbb15e&client_secret=903b7b6401bc3081ad6421c230444867f03ed4e1')
+  controller('VisualCtrl', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
+    $http.get('https://api.github.com/repos/' + $rootScope.user +'/'+$rootScope.repository+'/issues?state=closed&client_id=6b6eb2d2f4129ecbb15e&client_secret=903b7b6401bc3081ad6421c230444867f03ed4e1')
         .then(function(res) {
             var data = res.data;
             for (var i in data) {
@@ -89,6 +89,12 @@ angular.module('myApp.controllers', []).
     }
 
   }])
-  .controller('MainCtrl', [function() {
+  .controller('MainCtrl', ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {
+    $scope.visualize = function(){
+        console.log($scope.user)
+        $rootScope.repository = $scope.repository;
+        $rootScope.user = $scope.user;
+        $location.path("visualization");
+    }
 
   }]);
