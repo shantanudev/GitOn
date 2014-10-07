@@ -4,7 +4,7 @@
 var result = []
 
 angular.module('myApp.controllers', []).
-  controller('MyCtrl1', ['$scope', '$http', function($scope, $http) {
+  controller('VisualCtrl', ['$scope', '$http', function($scope, $http) {
     $http.get('https://api.github.com/repos/basho/riak/issues?state=closed&client_id=6b6eb2d2f4129ecbb15e&client_secret=903b7b6401bc3081ad6421c230444867f03ed4e1')
         .then(function(res) {
             var data = res.data;
@@ -89,6 +89,6 @@ angular.module('myApp.controllers', []).
     }
 
   }])
-  .controller('MyCtrl2', [function() {
+  .controller('MainCtrl', [function() {
 
   }]);
