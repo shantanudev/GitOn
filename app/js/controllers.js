@@ -5,7 +5,7 @@ var result = []
 
 angular.module('myApp.controllers', []).
   controller('VisualCtrl', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
-    $http.get('https://api.github.com/repos/' + $rootScope.user +'/'+$rootScope.repository+'/issues?state=closed&client_id=6b6eb2d2f4129ecbb15e&client_secret=903b7b6401bc3081ad6421c230444867f03ed4e1')
+    $http.get('https://api.github.com/repos/' + $rootScope.user +'/'+$rootScope.repository+'/issues?state=closed')
         .then(function(res) {
             var data = res.data;
             for (var i in data) {
